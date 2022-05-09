@@ -1,0 +1,38 @@
+\documentclass{tarea}
+\def\MakeUppercaseUnsupportedInPdfStrings{\scshape}
+
+
+\curso{Meteorología Física}
+\facultad{Departamento de Geofísica\\FCFM}
+\profesor{Ricardo Muñoz}
+\auxiliar{Sebastián Villalón}
+\ayudante{Victoria Caballero}
+
+\tarea{Control}
+\ntarea{1}
+
+\usepackage{subfiles}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{booktabs}
+
+\titleformat{\section}{\bfseries}{Problema \thesection}{1em}{}
+\counterwithin{figure}{section}
+\counterwithin{equation}{section}
+
+\begin{document}
+
+\maketitle
+
+\section{}
+\subfile{p1/p1.tex}
+
+\section{}
+\subfile{p2/p2.tex}
+
+\section{}
+\section{}
+\section{}
+\subfile{p5/p5.tex}
+
+\end{document}

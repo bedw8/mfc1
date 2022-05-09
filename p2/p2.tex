@@ -1,0 +1,83 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+\begin{enumerate}[a)]
+    \item Para calcular la razón de mezcla usamos la humedad relativa y la relación
+        \begin{equation}
+            w = \frac{\text{HR}}{100} w_\text{sat}  
+        \end{equation}
+Sin embargo para poder usar esta expresión necesitamos también $w_\text{sat}$. Esta cantidad lo obtenemos a partir de
+\begin{equation}
+    w_\text{sat} = e_\text{sat} \frac{\epsilon}{P - e_\text{sat}}
+\end{equation}
+y por último, $e_\text{sat}$ la obtenemos usando la ecuación de Clasius-Clapeyron, en particular la siguiente forma de dicha ecuación:
+\begin{equation}
+   e_\text{sat}(T) 6.11 \cdot \exp \left(   5.42\cdot 10^3 \left( \frac{1}{273} - \frac{1}{T} \right) \right)
+\end{equation}
+con $T$ la temperatura en Kelvin, y $\epsilon = 0.622$.\\
+
+A continuación mostramos los valores obtenidos para la razón de mezcla de cada nivel.\\
+
+\begin{minipage}{\linewidth}
+\centering
+\captionof{table}{Datos de presión, temperatura, humedad relativa, presión de vapor saturada, razón de mezcla saturada, y razón de mezcla. Todo esto en los 5 niveles mas bajos.}
+\import{data}{w.tex}
+\end{minipage}\\
+
+Para calcular la cantidad de agua usamos la siguiente expresión
+\begin{equation}
+    LWC = \frac{1}{\rho_l g} \int_{P_1}^{P_2} q(p) dp
+,\end{equation}
+con $\rho_l$ la densidad del agua líquida, $g$ la aceleración de gravedad, $q$ la humedad específica y $p$ la presión. 
+
+Como en realidad tenemos una cantidad discreta y no podemos integrar, haremos la siguiente suma. 
+ \begin{equation}
+     LWC = \frac{1}{\rho_l g} \sum \frac{w_n + w_{n+1}}{2}\Delta p_n
+\end{equation}
+Es decir, entre cada par consecutivo de datos calculamos la razón de mezcla promedio y la multiplicamos por la diferencia de presión $\Delta p$
+
+Realizando lo anterior entre los primeros 4 niveles (hasta aproximadamente 870 hPa), obtenemos una cantidad de 11.37 milímetros.
+
+    \item Para obtener el volumen antes de reventar consideraremos que la ecuación de estado
+\begin{equation}
+    PV = nRT \label{estado}
+\end{equation}
+se cumple en el momento que fue soltado, y justo antes de reventar. Luego tenemos que
+$$\frac{P_1V_1}{T_1} = \frac{P_2V_2}{T_2}$$
+Como queremos el volumen final, despejamos $V_2$.
+\begin{equation}
+    V_2 = \frac{T_2}{T_1} \frac{P_1}{P_2} V_1 \label{V2}
+\end{equation}
+En el enunciado nos dicen que la temperatura dentro del globo siempre es igual que la temperatura del ambiente. Entonces $T_1$ y $T_2$ los podemos obtener de los datos.
+
+Por otro lado nos dicen que la presión justo antes de reventar es igual a la exterior. Es decir, $P_2$ también lo podemos obtener de los datos, en particular será la menor presión registrada (punto de mayor altura).
+
+Ahora, para obtener $P_1$ utilizaremos la ecuación de estado
+\begin{equation}
+    P_1 = \rho_1 R_\text{He} T_1 \label{e1}
+\end{equation}
+Notemos que usamos la constante de gases específica para el gas al interior del globo, el cual asumiremos que es Helio. Recordemos que la constante $R_\text{He}$ tiene el valor de $\frac{R}{M_\text{He}}$ con $R =8.314 \frac{\text{J}}{\text{K mol}}$ la constante de gases ideales $M_\text{He} = 4.003 \frac{\text{g}}{\text{mol}}$ la masa molar del Helio.\\
+
+Remplazando \eqref{e1} en \eqref{V2} llegamos a
+\begin{align*}
+    V_2 &= \frac{T_2}{T_1} \frac{V_1}{P_2} \left( \rho_1 R_\text{He} T_1 \right) \\
+        &= \frac{T_2}{P_2}m_1 R_\text{He} 
+.\end{align*}
+Remplazando los valores numéricos de $T_2$ (valor de temperatura cuando en el punto de menor presión; igual a 21.65$^\circ$C) y $P_2$ (registro de menor presión; igual a 93.55 hPa) obtenemos que el volumen alcanzado es aproximadamente de unos 26.17 m$^3$, alcanzando así un radio de unos 1.84 metros
+    \item Consideraremos el primer y último registro que tenemos de la fase final. Estos tienen una presión de 93.55 hPa y 111.35 hPa, respectivamente. 
+
+Si consideramos una atmósfera estándar, la altura en función de la presión viene dada por
+\begin{equation}
+    Z = 44307.7 \left( 1 - \left( \frac{P}{1013.25} \right)^{0.190284}  \right) \label{zpisa}
+\end{equation}
+con $P$ la presión en hPa. 
+
+Evaluamos \eqref{zpisa} para ambos valores de presión y calculamos la diferencia de altura. Obtenemos un valor de 948.9 metros  
+
+
+
+\end{enumerate}
+
+
+
+\end{document}
